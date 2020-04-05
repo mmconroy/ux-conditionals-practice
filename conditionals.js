@@ -21,7 +21,7 @@
 */
 function getColor(number) {
   // Uncomment and complete
-  return /* ( Your code Here ) ?  Your code Here  :  Your code Here */;
+  return number > 10 ? "blue" : "red";
 }
 
 /* 
@@ -49,7 +49,7 @@ console.log(getColor(10) === "red");
     if the brightness is greater than or equal to 200, then return "on"
 */
 function lightStatus(brightness) {
-  return /* Put both ternary statements here, in one line */;
+  return brightness > 200 ? "on" : brightness > 0 ? "dimmed" : "off";
 }
 
 /* 
@@ -85,15 +85,30 @@ console.log(lightStatus(255) === "on");
 */
 
 function getLightBulbStatusDisplayString(status) {
-  let result = "";
-  /* uncomment and complete
-    switch( your code here ) {
-      case "your code here": 
-        your code here;
-        break;
-      etc...
-    }
-    */
+  let result = status;
+  switch (status) {
+    case "on":
+      console.log("The house is bright!");
+      break;
+    case "dimmed":
+      console.log("The house is nice and dim");
+      break;
+    case "deleted":
+      console.log("The lightbulb has been removed from the system");
+      break;
+    case "off":
+      console.log("The house is dark");
+      break;
+    case "broken":
+      console.log("The house is dark and we can't turn the light on!");
+      break;
+    case "offline":
+    case "missing":
+      console.log("The house is dark and we can't find the lightbulb!");
+      break;
+    default:
+      console.log("Something is wrong");
+  }
   return result;
 }
 
@@ -213,6 +228,7 @@ function turnOffLight(lightName) {
 /* 
    -------YOUR CODE-----------------------------------------------------------
 */
+
 function updateLights(
   somebodyIsHome,
   theyAreWatchingTV,
@@ -220,12 +236,44 @@ function updateLights(
   theyAreCooking,
   theyWentToBed
 ) {
-  // Write your code here!  You don't need to return anything, just call the given functions
-  // You should be using if else statements and the function arguments
-  // example of turning a light on
-  turnOnLight("livingRoomLight");
-  // example of turning off a light
-  turnOffLight("livingRoomLight");
+  // livingRoomLight
+  // diningRoomLight
+  // kitchenLight
+  // frontPorchLight
+  // bedroomLight
+
+  // If it's dark out, the porch light should be on.  If it's not dark, then it's off.
+  if (itIsDarkOutside) {
+    turnOnLight("frontPorchLight");
+  } else {
+    turnOffLight("frontPorchLight");
+  }
+  // If nobody home, then turn all the lights off (except the porch light).
+  if (!somebodyIsHome) {
+    turnOffLight("livingRoomLight");
+    turnOffLight("diningRoomLight");
+    turnOffLight("kitchenLight");
+    turnOffLight("bedroomLight");
+  }
+  // If someone is home but they haven't gone to bed, then the living room and dining room lights should be on.
+  if (somebodyIsHome && !theyWentToBed) {
+    turnOnLight("livingRoomLight");
+    turnOnLight("diningRoomLight");
+  }
+  // if someone is cooking, then the kitchen light should be on.
+  if (theyAreCooking) {
+    turnOnLight("kitchenLight");
+  }
+  // However, if they are watching TV, then turn off the livingroom and dining room lights.
+  else if (theyAreWatchingTV) {
+    turnOffLight("livingRoomLight");
+    turnOffLight("diningRoomLight");
+  }
+
+  // If they are in bed, then the bedroom light should be on.
+  if (theyWentToBed) {
+    turnOnLight("bedroomLight");
+  }
 }
 
 /* 
