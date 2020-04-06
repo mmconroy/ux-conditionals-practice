@@ -49,7 +49,7 @@ console.log(getColor(10) === "red");
     if the brightness is greater than or equal to 200, then return "on"
 */
 function lightStatus(brightness) {
-  return brightness > 200 ? "on" : brightness > 0 ? "dimmed" : "off";
+  return brightness >= 200 ? "on" : brightness > 0 ? "dimmed" : "off";
 }
 
 /* 
@@ -109,7 +109,8 @@ function getLightBulbStatusDisplayString(status) {
       return "The house is dark and we can't find the lightbulb!";
       break;
     default:
-      return "Something is wrong";
+      return "Something is wrong!";
+      break;
   }
 }
 
