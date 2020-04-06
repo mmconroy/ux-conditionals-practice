@@ -88,28 +88,29 @@ function getLightBulbStatusDisplayString(status) {
   let result = status;
   switch (status) {
     case "on":
-      console.log("The house is bright!");
+      return "The house is bright!";
       break;
     case "dimmed":
-      console.log("The house is nice and dim");
+      return "The house is nice and dim";
       break;
     case "deleted":
-      console.log("The lightbulb has been removed from the system");
+      return "The lightbulb has been removed from the system";
       break;
     case "off":
-      console.log("The house is dark");
+      return "The house is dark";
       break;
     case "broken":
-      console.log("The house is dark and we can't turn the light on!");
+      return "The house is dark and we can't turn the light on!";
       break;
     case "offline":
+      return "The house is dark and we can't find the lightbulb!";
+      break;
     case "missing":
-      console.log("The house is dark and we can't find the lightbulb!");
+      return "The house is dark and we can't find the lightbulb!";
       break;
     default:
-      console.log("Something is wrong");
+      return "Something is wrong";
   }
-  return result;
 }
 
 /* 
@@ -200,7 +201,7 @@ function resetLights() {
     diningRoomLight: "off",
     kitchenLight: "off",
     frontPorchLight: "off",
-    bedroomLight: "off"
+    bedroomLight: "off",
   };
 }
 
